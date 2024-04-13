@@ -1,4 +1,3 @@
 package dev.armancodeblock.catalogservice.domain;
 
-public interface ProductRepository {
-}
+public interface ProductRepository {}
