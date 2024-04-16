@@ -15,16 +15,17 @@ public class ProductController {
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
+
     @GetMapping
-    PageResult<Product> getProduct(@RequestParam(name = "page",defaultValue = "1") int pageNo) {
+    PageResult<Product> getProduct(@RequestParam(name = "page", defaultValue = "1") int pageNo) {
         return productService.getProducts(pageNo);
     }
-@GetMapping("/{code}")
+
+    @GetMapping("/{code}")
     ResponseEntity<Product> getProductByCode(@PathVariable String code) {
         return productService
                 .getProductByCode(code)
                 .map(ResponseEntity::ok)
-                .orElseThrow(()-> ProductNotFoundException.forCode(code));
+                .orElseThrow(() -> ProductNotFoundException.forCode(code));
     }
-
 }
