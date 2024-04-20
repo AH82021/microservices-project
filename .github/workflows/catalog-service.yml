@@ -36,9 +36,10 @@ jobs:
           password: ${{secrets.DOCKERHUB_TOKEN}}
       - if: ${{github.ref =='refs/heads/main'}}
         name: Build and Publish Docker image
-        run:
-         ./mvnw spring-boot:build-image -DiskpTests
-         docker push ${{secrets.DOCKERHUB_USERNAME}}/ecom-catalog-service
+        run: |
+          ./mvnw spring-boot:build-image -DskipTests
+          echo "Pushing the image $DOCKER_IMAGE_NAME to Docker Hub..."
+          docker push $DOCKER_IMAGE_NAME
 
 
 
