@@ -13,4 +13,5 @@ public class ProductServiceClient {
     public ProductServiceClient(RestClient restClient) {
         this.restClient = restClient;
     }
+
 }
